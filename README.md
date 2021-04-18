@@ -60,3 +60,21 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+The test architecture:
+
+api.php (routing)
+    |
+    |
+    -----> SocialMediaController.php (controller)  Is calling by api service
+        |
+        |
+        -----> SocialMediaHelper.php (helper) Business rules apply
+            |
+            |
+            -----> SocialMediaRepository.php (repository) SQL methods
+
+The Social Media table was create into migrations files, you need install all Laravel project and run the migration.
+I created 1 table, but I could create 1 table for People, if I made that I was need to was a new Helper and Repository file.
+I decided to use this architecture because is more easier to do the maintenance and separate application level.
